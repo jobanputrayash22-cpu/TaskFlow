@@ -1,0 +1,19 @@
+# Frontend
+task-management-frontend/node_modules/
+task-management-frontend/dist/
+
+# Backend
+task-management-api/venv/
+task-management-api/__pycache__/
+*.pyc
+
+# Environment
+.env
+*.env
+
+# Database
+*.db
+*.sqlite3
+
+# VS Code
+.vscode/
