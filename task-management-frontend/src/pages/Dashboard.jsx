@@ -15,11 +15,11 @@ function Dashboard() {
   const token = localStorage.getItem("token");
 
   const api = axios.create({
-    baseURL: "http://127.0.0.1:8000",
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
+  baseURL: "https://taskflow-api-ty4q.onrender.com",
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+});
 
   // Get Tasks
   const getTasks = async () => {

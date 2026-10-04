@@ -28,10 +28,10 @@ function Register() {
     setSuccess("");
 
     try {
-      await axios.post(
-        "http://127.0.0.1:8000/auth/register",
-        form
-      );
+     await axios.post(
+  "https://taskflow-api-ty4q.onrender.com/auth/register",
+  form
+);
 
       setSuccess("Account created successfully!");
 
