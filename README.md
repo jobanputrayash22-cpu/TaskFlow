@@ -1,8 +1,24 @@
-# TaskFlow – Task Management System
+# TaskFlow - Task Management System
 
-TaskFlow is a simple Task Management System developed using **React.js** for the frontend and **FastAPI** for the backend. It allows users to register, login securely using JWT authentication, and manage their personal tasks.
+TaskFlow is a full-stack Task Management System developed using React.js and FastAPI. It allows users to register, login securely, and manage their personal tasks with CRUD operations.
 
-## 🚀 Features
+## Live Demo
+
+### Frontend
+https://taskflow-10g1.onrender.com
+
+### Backend API
+https://taskflow-api-ty4q.onrender.com
+
+### API Documentation
+https://taskflow-api-ty4q.onrender.com/docs
+
+### GitHub Repository
+https://github.com/jobanputrayash22-cpu/TaskFlow
+
+---
+
+## Features
 
 - User Registration
 - User Login
@@ -14,271 +30,193 @@ TaskFlow is a simple Task Management System developed using **React.js** for the
 - Mark Tasks as Completed/Pending
 - Search Tasks
 - User-specific Tasks
-- Logout
-- RESTful API
+- Input Validation
+- Error Handling
+- REST API
 - Swagger API Documentation
+- Responsive UI
 
-## 🛠️ Technologies Used
+---
+
+## Technologies Used
 
 ### Frontend
 - React.js
+- Vite
 - Tailwind CSS
 - Axios
-- React Router DOM
+- React Router
 
 ### Backend
 - Python
 - FastAPI
 - SQLAlchemy
 - JWT Authentication
-- Pydantic
+- Passlib
+- Bcrypt
 
 ### Database
-- SQLite / SQL Database configured in the backend
+- SQLite
 
-## 📁 Project Structure
+### Deployment
+- Render
+- GitHub
+
+---
+
+## Project Structure
 
 ```text
 TaskFlow/
 │
-├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   │   ├── Login.jsx
-│   │   │   ├── Register.jsx
-│   │   │   └── Dashboard.jsx
-│   │   │
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   │
-│   ├── package.json
-│   └── ...
-│
-├── backend/
+├── task-management-api/
 │   ├── app/
 │   │   ├── main.py
 │   │   ├── database.py
 │   │   ├── models.py
 │   │   ├── schemas.py
+│   │   ├── auth.py
 │   │   ├── dependencies.py
-│   │   │
 │   │   └── routers/
 │   │       ├── auth.py
 │   │       └── tasks.py
 │   │
 │   └── requirements.txt
 │
-└── README.md
-```
+└── task-management-frontend/
+    ├── src/
+    │   ├── pages/
+    │   │   ├── Login.jsx
+    │   │   ├── Register.jsx
+    │   │   └── Dashboard.jsx
+    │   ├── App.jsx
+    │   ├── main.jsx
+    │   └── index.css
+    │
+    └── package.json
 
-## 🔐 Authentication
 
-TaskFlow uses **JWT (JSON Web Token)** authentication.
+Authentication
+TaskFlow uses JWT-based authentication.
+1. User registers with username, email and password.
+2. User logs in using credentials.
+3. Backend validates the credentials.
+4. A JWT access token is generated.
+5. The token is stored on the frontend.
+6. Protected task APIs use the token for authentication.
+CRUD Operations
+TaskFlow provides complete CRUD functionality:
+Create
+Users can create a new task with a title and description.
+Read
+Users can view their tasks and search tasks.
+Update
+Users can edit task details and change task status.
+Delete
+Users can delete existing tasks.
+API Endpoints
+Method	Endpoint	Description
+POST	/auth/register	Register a new user
+POST	/auth/login	Login user
+POST	/tasks/	Create a task
+GET	/tasks/	Get all tasks
+GET	/tasks/{task_id}	Get a single task
+PUT	/tasks/{task_id}	Update a task
+DELETE	/tasks/{task_id}	Delete a task
 
-After successful login, the JWT token is stored in the browser's local storage.
 
-The token is then sent with protected API requests using:
+API Documentation
+FastAPI automatically provides interactive Swagger documentation.
+API Documentation:
+https://taskflow-api-ty4q.onrender.com/docs
+The Swagger interface can be used to test the available API endpoints.
+Installation and Setup
+Backend
+Clone the repository:
+git clone https://github.com/jobanputrayash22-cpu/TaskFlow.git
 
-```text
-Authorization: Bearer <token>
-```
+Go to backend:
+cd TaskFlow/task-management-api
 
-Only authenticated users can access and manage their tasks.
-
-## 🔗 API Endpoints
-
-### Authentication
-
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/auth/register` | Register a new user |
-| POST | `/auth/login` | Login user |
-
-### Tasks
-
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/tasks/` | Create a task |
-| GET | `/tasks/` | Get all user tasks |
-| GET | `/tasks/{task_id}` | Get a specific task |
-| PUT | `/tasks/{task_id}` | Update a task |
-| DELETE | `/tasks/{task_id}` | Delete a task |
-
-### Search
-
-Tasks can also be searched using:
-
-```text
-GET /tasks/?search=task_name
-```
-
-Tasks can be filtered using the completed parameter:
-
-```text
-GET /tasks/?completed=true
-```
-
-## ⚙️ Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone <your-github-repository-url>
-cd TaskFlow
-```
-
-## 🖥️ Backend Setup
-
-Open a terminal inside the backend directory:
-
-```bash
-cd backend
-```
-
-Create a virtual environment:
-
-```bash
+Create virtual environment:
 python -m venv venv
-```
 
-Activate it on Windows:
-
-```bash
+Activate virtual environment:
+Windows
 venv\Scripts\activate
-```
 
 Install dependencies:
-
-```bash
 pip install -r requirements.txt
-```
 
-Run the FastAPI server:
-
-```bash
+Run backend:
 uvicorn app.main:app --reload
-```
 
 Backend will run at:
-
-```text
 http://127.0.0.1:8000
-```
 
-## 📚 Swagger API Documentation
-
-FastAPI automatically provides API documentation.
-
-Open:
-
-```text
-http://127.0.0.1:8000/docs
-```
-
-## 🌐 Frontend Setup
-
-Open another terminal:
-
-```bash
-cd frontend
-```
+Frontend Setup
+Go to frontend:
+cd TaskFlow/task-management-frontend
 
 Install dependencies:
-
-```bash
 npm install
-```
 
-Run the React application:
-
-```bash
+Run frontend:
 npm run dev
-```
 
 Frontend will run at:
-
-```text
 http://localhost:5173
-```
 
-## 🔄 Application Flow
-
-```text
-User
- │
- ▼
-Register
- │
- ▼
-Login
- │
- ▼
-JWT Token Generated
- │
- ▼
-Dashboard
- │
- ├── Add Task
- ├── View Tasks
- ├── Search Task
- ├── Edit Task
- ├── Complete Task
- └── Delete Task
-```
-
-## 🧪 Testing
-
-The following functionality has been tested:
-
-- User registration
-- User login
-- JWT authentication
-- CORS configuration
-- Task creation
-- Task listing
-- Task searching
-- Task editing
-- Task completion
-- Task deletion
-- Logout
-- Protected dashboard access
-
-## 📸 Screenshots
-
-Add project screenshots here:
-
-1. Registration Page
-2. Login Page
-3. Dashboard
-4. Add Task
-5. Edit Task
-6. Completed Task
-7. Search Task
-8. Swagger API Documentation
-
-Example:
-
-```text
-screenshots/
-├── register.png
-├── login.png
-├── dashboard.png
-├── add-task.png
-├── edit-task.png
-├── completed-task.png
-└── swagger.png
-```
-
-## 🎯 Project Objective
-
-The main objective of TaskFlow is to develop a simple and secure task management application using modern web technologies. The project demonstrates frontend-backend integration, REST API development, database operations, authentication, and CRUD functionality.
-
-## 📌 Conclusion
-
-TaskFlow successfully provides a complete task management solution with user authentication and CRUD operations. The project demonstrates how a React frontend can communicate with a FastAPI backend through REST APIs while maintaining authenticated and user-specific task data.
-
-## 👨‍💻 Developer
-
-**Yash Jobanputra**
-
-TaskFlow – Task Management System
+Database
+The project uses SQLite with SQLAlchemy ORM.
+The database stores:
+- User information
+- Task information
+- User-task relationship
+- Task completion status
+Validation and Error Handling
+The application validates user input before processing requests.
+Examples include:
+- Required task title
+- Valid email address
+- Authentication validation
+- Invalid login handling
+- Unauthorized access handling
+- Task not found handling
+- API error responses
+Deployment
+The project is deployed using Render.
+Frontend
+https://taskflow-10g1.onrender.com
+Backend
+https://taskflow-api-ty4q.onrender.com
+API Documentation
+https://taskflow-api-ty4q.onrender.com/docs
+Future Enhancements
+- Task due dates
+- Task priorities
+- Task categories
+- User profile management
+- Email notifications
+- PostgreSQL database
+- Admin dashboard
+- Task pagination
+- Advanced filtering
+Screenshots
+Screenshots of the following modules are included in the project documentation:
+- Registration
+- Login
+- Dashboard
+- Add Task
+- Edit Task
+- Completed Task
+- Search Task
+- Swagger API Documentation
+- Live Deployment
+Conclusion
+TaskFlow demonstrates a complete full-stack Task Management System using React.js and FastAPI. The application implements JWT authentication, CRUD operations, input validation, error handling, REST APIs and deployment.
+The project provides a simple and user-friendly platform for managing personal tasks securely.
+Author
+Yash Jobanputra
+MSc ICT
+Veer Narmad South Gujarat University (VNSGU)
